@@ -112,26 +112,38 @@ public class App {
             Product product5 = new Product("p-131", "Kit nettoyage aquarium", ProdType.CLEANING, 11.50);
             Product product6 = new Product("p-127", "Litière + pelle pour chat", ProdType.CLEANING, 8.99);
             Product product7 = new Product("p-133", "Aquarium", ProdType.ACCESSORY, 32.99);
-            Product product8 = new Product("p-135", "Souris tressé pour chat", ProdType.ACCESSORY, 1.90);
-            Product product9 = new Product("p-127", "Balle rebondissante", ProdType.ACCESSORY, 1.35);
 
             petStore1.addProduct(product1);
             petStore1.addProduct(product2);
             petStore1.addProduct(product7);
-            petStore1.addProduct(product8);
+
 
             petStore2.addProduct(product1);
             petStore2.addProduct(product3);
             petStore2.addProduct(product6);
-            petStore2.addProduct(product9);
+
 
             petStore3.addProduct(product4);
             petStore3.addProduct(product5);
             petStore3.addProduct(product7);
-            petStore3.addProduct(product8);
+
 
             // On persist
             petStoreRepository.save(petStore1);
+            petStoreRepository.save(petStore2);
+            petStoreRepository.save(petStore3);
+
+
+            System.out.println("Liste animaux du pet store 1 : ");
+            System.out.println(animalRepository.findAnimalsByPetStoreName(petStore1.getName()));
+            System.out.println();
+            System.out.println("Liste animaux du pet store 2 : ");
+            System.out.println(animalRepository.findAnimalsByPetStoreName(petStore2.getName()));
+            System.out.println();
+            System.out.println("Liste animaux du pet store 3 : ");
+            System.out.println(animalRepository.findAnimalsByPetStoreName(petStore3.getName()));
+            System.out.println();
+
 
 
             System.out.println("----------------------- Liste des PetStores -----------------------");
@@ -143,6 +155,7 @@ public class App {
         }
         catch (Exception e)
         {
+            System.out.println(e.getCause());
             System.out.println("ERREUR");
             System.err.println(e.getMessage());
         }

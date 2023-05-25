@@ -18,19 +18,15 @@ public class PetStore {
     @Column(name = "MANAGERNAME")
     private String managerName;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
-    @ManyToMany
-    @JoinTable(name="CTC",
-            joinColumns= @JoinColumn(name="ID_PET", referencedColumnName= "ID"),
-            inverseJoinColumns= @JoinColumn(name="ID_PRO", referencedColumnName="ID")
-    )
+    @ManyToMany(mappedBy ="petStores",cascade = CascadeType.ALL)
     private Set<Product> products;
     {
         products = new HashSet<>();
     }
-    @OneToMany(mappedBy="petStore")
+    @OneToMany(mappedBy="petStore", cascade = CascadeType.ALL)
     private Set<Animal> animals;
     {
         animals = new HashSet<>();
@@ -40,6 +36,16 @@ public class PetStore {
         this.name = name;
         this.managerName = managerName;
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "PetStore{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", managerName='" + managerName + '\'' +
+                ", address=" + address +
+                '}';
     }
 
     public Set<Animal> getAnimals() {

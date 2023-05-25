@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "FISH")
+@Table(name = "PRODUCT")
 public class Product {
     @Id
     @GeneratedValue
@@ -24,7 +24,7 @@ public class Product {
     @Column(name = "PRICE")
     private Double price;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="CTC",
             joinColumns= @JoinColumn(name="ID_PRO", referencedColumnName= "ID"),
             inverseJoinColumns= @JoinColumn(name="ID_PET", referencedColumnName="ID")
@@ -40,6 +40,17 @@ public class Product {
         this.label = label;
         this.type = type;
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", label='" + label + '\'' +
+                ", type=" + type +
+                ", price=" + price +
+                '}';
     }
 
     public Set<PetStore> getPetStores() {

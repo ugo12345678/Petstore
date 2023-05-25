@@ -19,7 +19,7 @@ public abstract class Animal {
     @Column(name = "COULEUR")
     private String couleur;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="ID_PETSTORE")
     private PetStore petStore;
 

@@ -17,6 +17,13 @@ public class Cat extends Animal  {
         this.shipid = shipid;
     }
 
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "shipid='" + shipid + '\'' +
+                '}';
+    }
+
     public String getShipid() {
         return shipid;
     }

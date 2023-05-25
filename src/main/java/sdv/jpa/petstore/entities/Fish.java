@@ -23,6 +23,13 @@ public class Fish extends Animal {
         this.livingEnv = livingEnv;
     }
 
+    @Override
+    public String toString() {
+        return "Fish{" +
+                "livingEnv=" + livingEnv +
+                '}';
+    }
+
     public FishLivEnv getLivingEnv() {
         return livingEnv;
     }

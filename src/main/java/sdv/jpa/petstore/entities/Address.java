@@ -20,6 +20,9 @@ public class Address {
     private String zipCode;
     @Column(name = "CITY")
     private String city;
+
+    @OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
+    private PetStore petStore;
     public Address() {}
     public Address(String number, String street, String zipCode, String city) {
         this.number = number;
